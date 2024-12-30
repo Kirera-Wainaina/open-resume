@@ -119,7 +119,7 @@ export const Form = ({
             onClick={() => {
               dispatch(addSectionInForm({ form }));
             }}
-            className="flex items-center rounded-md bg-white py-2 pl-3 pr-4 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+            className="add-button flex items-center rounded-md bg-white py-2 pl-3 pr-4 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
           >
             <PlusSmallIcon
               className="-ml-0.5 mr-1.5 h-5 w-5 text-gray-400"
