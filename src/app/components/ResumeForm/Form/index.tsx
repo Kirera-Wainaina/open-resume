@@ -163,7 +163,7 @@ export const FormSection = ({
       {idx !== 0 && (
         <div className="mb-4 mt-6 border-t-2 border-dotted border-gray-200" />
       )}
-      <div className="relative grid grid-cols-6 gap-3">
+      <div className="sub-form relative grid grid-cols-6 gap-3">
         {children}
         <div className={`absolute right-0 top-0 flex gap-0.5 `}>
           <div
