@@ -10,6 +10,7 @@ import { DEFAULT_FONT_COLOR } from "lib/redux/settingsSlice";
 import type { Settings, ShowForm } from "lib/redux/settingsSlice";
 import type { Resume } from "lib/redux/types";
 import { SuppressResumePDFErrorMessage } from "components/Resume/ResumePDF/common/SuppressResumePDFErrorMessage";
+import { useState } from "react";
 
 /**
  * Note: ResumePDF is supposed to be rendered inside PDFViewer. However,
@@ -92,6 +93,9 @@ export const ResumePDF = ({
     ),
   };
 
+  // Add state to store the page number
+  const [currentPage, setCurrentPage] = useState<number>(0);
+
   return (
     <>
       <Document title={`${name} Resume`} author={name} producer={"OpenResume"}>
@@ -102,6 +106,8 @@ export const ResumePDF = ({
             color: DEFAULT_FONT_COLOR,
             fontFamily,
             fontSize: fontSize + "pt",
+            paddingTop: currentPage === 1 ? undefined : "35",
+            paddingBottom: "35",
           }}
         >
           {Boolean(settings.themeColor) && (
@@ -128,6 +134,13 @@ export const ResumePDF = ({
               const Component = formTypeToComponent[form];
               return <Component key={form} />;
             })}
+            <View
+              render={({ pageNumber }) => {
+                // Update the page number when View is rendered
+                setCurrentPage(pageNumber);
+                return null;
+              }}
+            />
           </View>
         </Page>
       </Document>
